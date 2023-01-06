@@ -10,13 +10,13 @@ pipeline {
   }
   
     stages {
-        stage("checkout") {
+        stage ("checkout") {
             steps {
                 git branch: 'main', changelog: false, credentialsId: 'github', poll: false, url: 'https://github.com/vardhan6500/springboot-app.git'
             }
         }
         
-        stage('Build') {
+   stage ('Build') {
     withMaven(jdk: 'JAVA', maven: 'maven') {
         
         println "build is running"
