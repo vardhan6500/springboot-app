@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage("checkout") {
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/vardhan6500/springboot-app']])
+                git branch: 'main', changelog: false, credentialsId: 'github', poll: false, url: 'https://github.com/vardhan6500/springboot-app.git'
             }
         }
         stage ("Build Jar") {
