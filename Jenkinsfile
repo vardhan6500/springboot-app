@@ -15,11 +15,15 @@ pipeline {
                 git branch: 'main', changelog: false, credentialsId: 'github', poll: false, url: 'https://github.com/vardhan6500/springboot-app.git'
             }
         }
-        stage ("Build Jar") {
-            steps {
-                sh "mvn clean install"
-            }
-        }
+        
+        stage('Build') {
+    withMaven(jdk: 'JAVA', maven: 'maven') {
+        
+        println "build is running"
+        sh 'mvn clean package'
+    }
+}
+        
         stage ("Build Iamge") {
             steps {
                 script {
